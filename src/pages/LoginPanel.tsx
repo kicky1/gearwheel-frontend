@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { loginUser, logoutUser, useAuthorizationStore } from "@/stores/useAuthorizationStore";
+import { loginUser } from "@/stores/useAuthorizationStore";
 
 function LoginPanel() {
   return (

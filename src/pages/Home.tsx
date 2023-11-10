@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { logoutUser, useAuthorizationStore } from "@/stores/useAuthorizationStore";
-
+import { Form, Link, Outlet, RouterProvider, createBrowserRouter, redirect, useActionData, useFetcher, useLocation, useNavigation, useRouteLoaderData } from "react-router-dom";
 function Home() {
   const username = useAuthorizationStore((state) => state.username);
 
@@ -20,6 +20,11 @@ function Home() {
         >
           Log out
         </Button>
+        <ul>
+          <li>
+            <Link to="/test">Go to test panel</Link>
+          </li>
+        </ul>
       </div>
     </div>
   );
