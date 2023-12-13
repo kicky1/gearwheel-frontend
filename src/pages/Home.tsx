@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { logoutUser, useAuthorizationStore } from "@/stores/useAuthorizationStore";
-import { Form, Link, Outlet, RouterProvider, createBrowserRouter, redirect, useActionData, useFetcher, useLocation, useNavigation, useRouteLoaderData } from "react-router-dom";
+import { Button } from '@/components/ui/button'
+import { logoutUser, useAuthorizationStore } from '@/stores/useAuthorizationStore'
+import { Link } from 'react-router-dom'
+
 function Home() {
-  const username = useAuthorizationStore((state) => state.username);
+  const username = useAuthorizationStore((state) => state.username)
 
   return (
     <div className="flex-col md:flex">
@@ -15,7 +16,7 @@ function Home() {
         </div>
         <Button
           onClick={() => {
-            logoutUser();
+            logoutUser()
           }}
         >
           Log out
@@ -27,7 +28,7 @@ function Home() {
         </ul>
       </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

@@ -1,8 +1,8 @@
-import { useAuthorizationStore } from "@/stores/useAuthorizationStore";
-import { Link } from "react-router-dom";
+import { useAuthorizationStore } from '@/stores/useAuthorizationStore'
+import { Link } from 'react-router-dom'
 
-function TestPanel() {
-  const username = useAuthorizationStore((state) => state.username);
+function Test() {
+  const username = useAuthorizationStore((state) => state.username)
 
   return (
     <div className="flex-col md:flex">
@@ -20,7 +20,7 @@ function TestPanel() {
         </ul>
       </div>
     </div>
-  );
+  )
 }
 
-export default TestPanel;
+export default Test

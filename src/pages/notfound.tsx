@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ErrorPage() {
+function NotFound() {
   return (
     <div className="flex-col md:flex">
       <div className="border-b">
@@ -20,4 +20,4 @@ function ErrorPage() {
   );
 }
 
-export default ErrorPage;
+export default NotFound;
