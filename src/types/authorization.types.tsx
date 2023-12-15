@@ -1,16 +1,21 @@
+import { User } from "./user.types"
+
 export type LoginInput = {
   username: string
   password: string
 }
 
-export type RegisterInput = LoginInput & {
+export type RegisterInput = {
+  username: string
   email: string
+  password1: string
+  password2: string
 }
 
 export type AuthorizationStoreState = {
-  username: string
+  user: User
   authorized: boolean
-  setUsername: (name: string) => void
+  setUser: (user: User) => void
   setAuthorized: (flag: boolean) => void
   logoutUser: () => void
 }

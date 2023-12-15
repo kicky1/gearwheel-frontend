@@ -19,10 +19,10 @@ const App = () => {
             {authorized ? (
               <>
                 <Route path="/" element={<Home />} />
-                <Route path="/test" element={<Test />} />
+                <Route path="/users" element={<Users />} />
               </>
             ) : (
-              <Route path="/" element={<Users />} />
+              <Route path="/" element={<Login />} />
             )}
             <Route path="*" element={<NotFound />} />
           </Routes>

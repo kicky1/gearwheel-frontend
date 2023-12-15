@@ -3,7 +3,7 @@ import { logoutUser, useAuthorizationStore } from '@/stores/useAuthorizationStor
 import { Link } from 'react-router-dom'
 
 function Home() {
-  const username = useAuthorizationStore((state) => state.username)
+  const username = useAuthorizationStore((state) => state.user.username)
 
   return (
     <div className="flex-col md:flex">

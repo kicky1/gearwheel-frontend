@@ -16,7 +16,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useToast } from './ui/use-toast'
 import { register } from '@/actions/post-register'
-import { setAuthorized, setUsername } from '@/stores/useAuthorizationStore'
+import { setAuthorized } from '@/stores/useAuthorizationStore'
 
 type Props = {
   setIsRegister: (flag: boolean) => void
@@ -41,14 +41,14 @@ export default function RegisterCard({ setIsRegister }: Props) {
           description: 'The user has been correctly registered.',
         })
         setLoading(false)
-        setUsername(data.username)
-        setAuthorized(true)
       })
-      .catch((error) => {
+      .catch((error: any) => {
+        const errorMessage = error?.response?.data['username'] ? error?.response?.data['username'][0] : error?.response?.data[0][0]
+        console.log(errorMessage)
         toast({
           variant: 'destructive',
           title: 'Register Error',
-          description: error.message,
+          description: errorMessage,
         })
         setLoading(false)
       })
@@ -96,30 +96,30 @@ export default function RegisterCard({ setIsRegister }: Props) {
                 </div>
 
                 <div className="grid gap-2 pb-3">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password1">Password</Label>
                   <Input
-                    id="password"
+                    id="password1"
                     type="password"
                     placeholder="Create a password"
-                    {...registerForm('password')}
+                    {...registerForm('password1')}
                   />
-                  {errors.password && (
-                    <span className="text-red-500 text-sm">{errors.password.message}</span>
+                  {errors.password1 && (
+                    <span className="text-red-500 text-sm">{errors.password1.message}</span>
                   )}
                 </div>
 
-                {/* <div className="grid gap-2 pb-3">
-                  <Label htmlFor="passwordConfirm">Password</Label>
+                <div className="grid gap-2 pb-3">
+                  <Label htmlFor="password2">Password</Label>
                   <Input
-                    id="passwordConfirm"
+                    id="password2"
                     type="password"
                     placeholder="Confirm a password"
-                    {...register('password')}
+                    {...registerForm('password2')}
                   />
-                  {errors.password && (
-                    <span className="text-red-500 text-sm">{errors.password.message}</span>
+                  {errors.password2 && (
+                    <span className="text-red-500 text-sm">{errors.password2.message}</span>
                   )}
-                </div> */}
+                </div>
 
                 <div className="mt-4">
                   <Button className="w-full " disabled={loading} type="submit">

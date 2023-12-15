@@ -1,29 +1,38 @@
-import { AuthorizationStoreState, LoginInput } from '@/types/authorization.types'
-import { useMutation } from '@tanstack/react-query'
+import { AuthorizationStoreState } from '@/types/authorization.types'
+import { User } from '@/types/user.types';
 import create from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
 export const useAuthorizationStore = create<AuthorizationStoreState>()(
   immer((set) => ({
-    username: '',
+    user: {
+      dateJoined: null,
+      email: '',
+      id: 0,
+      isActive: false,
+      isStaff: false,
+      isSuperuser: false,
+      name: '',
+      username: ''
+    },
     authorized: false,
+    setUser: (user: User) => {
+      set((state: { user: User; }) => ({
+        user: { ...state.user, ...user },
+      }));
+    },
+    setAuthorized: (flag: boolean) => {
+      set(() => ({
+        authorized: flag,
+      }));
+    },
     logoutUser: () => {
-      set((state) => {
-        state.authorized = false
-        state.username = ''
-      })
-    },
-    setUsername: (name) => {
-      set((state) => {
-        state.username = name
-      })
-    },
-    setAuthorized: (flag) => {
-      set((state) => {
-        state.authorized = flag
-      })
+      set(() => ({
+        authorized: false,
+        user: {},
+      }));
     },
   }))
 )
 
-export const { logoutUser, setUsername, setAuthorized } = useAuthorizationStore.getState()
+export const { logoutUser, setUser, setAuthorized } = useAuthorizationStore.getState()

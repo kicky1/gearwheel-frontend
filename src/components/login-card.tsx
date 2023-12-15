@@ -14,8 +14,7 @@ import { RotateCw } from 'lucide-react'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { setAuthorized, setUsername } from '@/stores/useAuthorizationStore'
-
+import { setAuthorized, setUser } from '@/stores/useAuthorizationStore'
 import { useToast } from './ui/use-toast'
 import { login } from '@/actions/post-login'
 
@@ -35,21 +34,20 @@ export default function LoginCard({ setIsRegister }: Props) {
   const onSubmit: SubmitHandler<SignInSchemaType> = async (data) => {
     setLoading(true)
     login(data)
-      .then(() => {
+      .then((response) => {
         toast({
           title: 'Login Success',
           description: 'The user has been correctly logged in.',
         })
         setLoading(false)
-
-        setUsername(data.username)
+        setUser(response.user)
         setAuthorized(true)
       })
-      .catch((error) => {
+      .catch((error: any) => {
         toast({
           variant: 'destructive',
           title: 'Login Error',
-          description: error.message,
+          description: error?.response?.data?.non_field_errors[0],
         })
         setLoading(false)
       })
