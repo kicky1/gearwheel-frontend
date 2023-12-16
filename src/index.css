@@ -51,6 +51,23 @@
   }
 }
 
+/* global.css */
+
+/* Track */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1a202c;
+}
 
  
   

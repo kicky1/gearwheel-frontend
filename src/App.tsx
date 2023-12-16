@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/home'
 import { useAuthorizationStore } from './stores/useAuthorizationStore'
 import Login from './pages/login'
 import NotFound from './pages/notfound'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Users from './pages/users'
 import Navbar from './components/navbar'
+import Dashboard from './pages/dashboard'
 
 const App = () => {
   const authorized = useAuthorizationStore((state) => state.authorized)
@@ -19,7 +19,7 @@ const App = () => {
           <Routes>
             {authorized ? (
               <>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/users" element={<Users />} />
               </>
             ) : (
