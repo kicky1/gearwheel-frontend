@@ -25,6 +25,7 @@ type Props = {
 export default function LoginCard({ setIsRegister }: Props) {
   const [loading, setLoading] = useState(false)
   const { toast } = useToast()
+  
   const {
     register,
     handleSubmit,
