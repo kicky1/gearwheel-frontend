@@ -8,15 +8,15 @@
 
    ```javascript
    /* craco.config.js */
-   const path = require(`path`);
+   const path = require(`path`)
 
    module.exports = {
      webpack: {
        alias: {
-         "@": path.resolve(__dirname, "src/"),
+         '@': path.resolve(__dirname, 'src/'),
        },
      },
-   };
+   }
    ```
 
 3. Use craco in package.json:
@@ -31,5 +31,5 @@
    ```
 4. You can now use the `@` path alias the same way its used in `shadcn/ui`:
    ```typescript
-   import { cn } from "@/lib/utils";
+   import { cn } from '@/lib/utils'
    ```

@@ -43,7 +43,9 @@ export default function RegisterCard({ setIsRegister }: Props) {
         setLoading(false)
       })
       .catch((error: any) => {
-        const errorMessage = error?.response?.data['username'] ? error?.response?.data['username'][0] : error?.response?.data[0][0]
+        const errorMessage = error?.response?.data['username']
+          ? error?.response?.data['username'][0]
+          : error?.response?.data[0][0]
         console.log(errorMessage)
         toast({
           variant: 'destructive',

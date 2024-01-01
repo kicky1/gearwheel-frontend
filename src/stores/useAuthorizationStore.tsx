@@ -1,5 +1,5 @@
 import { AuthorizationStoreState } from '@/types/authorization.types'
-import { User } from '@/types/user.types';
+import { User } from '@/types/user.types'
 import create from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -13,24 +13,24 @@ export const useAuthorizationStore = create<AuthorizationStoreState>()(
       isStaff: false,
       isSuperuser: false,
       name: '',
-      username: ''
+      username: '',
     },
     authorized: false,
     setUser: (user: User) => {
-      set((state: { user: User; }) => ({
+      set((state: { user: User }) => ({
         user: { ...state.user, ...user },
-      }));
+      }))
     },
     setAuthorized: (flag: boolean) => {
       set(() => ({
         authorized: flag,
-      }));
+      }))
     },
     logoutUser: () => {
       set(() => ({
         authorized: false,
         user: {},
-      }));
+      }))
     },
   }))
 )

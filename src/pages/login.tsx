@@ -7,7 +7,7 @@ function Login() {
   const [isRegister, setIsRegister] = useState(false)
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-200 dark:bg-zinc-800/30">
+    <div className="flex flex-col min-h-screen dark:bg-zinc-800/30">
       <div className="max-w-5xl mx-auto">
         {isRegister ? (
           <RegisterCard setIsRegister={setIsRegister} />
